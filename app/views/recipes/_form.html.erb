@@ -1,0 +1,20 @@
+<% if recipe.errors.any? %>
+	<% recipe.errors.full_messages.each do |m| %>
+		<h3><%= m %></h3>
+	<% end %>
+<% end %>
+<%= form_for recipe do |f| %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+
+	<p>
+		<%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+
+<% end %>

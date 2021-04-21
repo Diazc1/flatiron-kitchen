@@ -1,0 +1,24 @@
+<h1><%= @recipe.name %></h1>
+<h3>Ingredients Required</h3>
+
+<table>
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Quantity</td>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @recipe.ingredients.each do |ingredient| %>
+			<tr>
+				<td><%= link_to ingredient.name, ingredient_path(ingredient) %></td>
+				<td><%= ingredient.quantity %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td>Total</td>
+			<td><%= @recipe.ingredients_quantities_sum %></td>
+		</tr>
+	</tbody>
+</table>
+<h3>Total Dishes can be made from available ingredients quantities: <%= @recipe.ingredients_to_dishes %></h3>
